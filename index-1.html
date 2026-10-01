@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="وصول فوري وشامل لكافة النصوص والتشريعات القانونية العراقية، مدعوماً بتقنية الذكاء الاصطناعي لخدمة المحامين، الطلاب والباحثين." />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="color-scheme" content="dark" />
+  <title>الدليل القانوني - تطبيق قانوني متكامل</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0a0f1e;
+      --bg-alt: #0d1527;
+      --card: #111a2f;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --accent: #64C3F3;
+      --accent-hover: #82d0f6;
+      --accent-ink: #06121f;
+      --accent-soft: rgba(100, 195, 243, 0.1);
+      --text: #e8eaf0;
+      --text-sub: #9db0ca;
+      --nav-h: 64px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+    html.no-scroll, html.no-scroll body { overflow: hidden; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    button { font-family: inherit; }
+    i { font-style: normal; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      padding-inline: max(5%, calc((100% - 1200px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 15, 30, 0.97);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .nav-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.93rem;
+      font-weight: 600;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); border-bottom-color: var(--accent); }
+
+    .nav-links .nav-cta {
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 8px 18px;
+      border-radius: 10px;
+      border-bottom: 0;
+      font-weight: 700;
+      transition: background-color 0.2s;
+    }
+
+    .nav-links .nav-cta:hover { background: var(--accent-hover); color: var(--accent-ink); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 999;
+      flex-direction: column;
+      padding: 4px 5% 16px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    }
+
+    .mobile-menu.open { opacity: 1; visibility: visible; transform: none; }
+
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu a:last-child { border-bottom: 0; color: var(--accent); font-weight: 700; }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-menu a:last-child:hover { color: var(--accent-hover); }
+
+    /* ─── HERO ─── */
+    .hero { padding: calc(var(--nav-h) + 64px) 5% 72px; }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    .hero-title { margin-bottom: 20px; line-height: 1.3; }
+
+    .hero-brand {
+      display: block;
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      font-weight: 800;
+    }
+
+    .hero-tagline {
+      display: block;
+      margin-top: 4px;
+      font-size: clamp(1.25rem, 3.6vw, 1.85rem);
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    .hero-desc {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    /* ─── DOWNLOAD ─── */
+    .download {
+      max-width: 480px;
+      margin: 36px auto 0;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      scroll-margin-top: calc(var(--nav-h) + 16px);
+    }
+
+    .download-title { margin-bottom: 16px; font-size: 1.15rem; font-weight: 700; }
+
+    .download-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .dl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+      min-height: 52px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .dl-btn i { font-size: 1.3rem; line-height: 1; }
+    .dl-btn:hover { background: var(--accent-hover); }
+
+    .dl-status {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .dl-status a { color: var(--accent); text-decoration: underline; }
+
+    /* ─── DISCLAIMER ─── */
+    .disclaimer-card {
+      max-width: 720px;
+      margin: 32px auto 0;
+      padding: 20px 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-inline-start: 3px solid var(--accent);
+      border-radius: 12px;
+      text-align: start;
+    }
+
+    .disclaimer-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .disclaimer-head i { color: var(--accent); }
+
+    .disclaimer-card p {
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      line-height: 1.9;
+    }
+
+    /* ─── SOCIAL ─── */
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .social-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .social-btn.sm { width: 40px; height: 40px; font-size: 0.95rem; }
+
+    /* ─── STRIP ─── */
+    .strip {
+      padding: 28px 5%;
+      background: var(--bg-alt);
+      border-block: 1px solid var(--line);
+    }
+
+    .strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px 28px;
+    }
+
+    .strip-item { display: flex; align-items: center; gap: 14px; }
+    .strip-item i { width: 24px; text-align: center; color: var(--accent); font-size: 1.25rem; }
+    .strip-item strong { display: block; font-size: 0.95rem; font-weight: 700; }
+    .strip-item span { color: var(--text-sub); font-size: 0.85rem; }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 88px 5%; }
+    #features { background: var(--bg-alt); border-block: 1px solid var(--line); }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-head { margin-bottom: 48px; text-align: center; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-text .section-title { margin-bottom: 18px; }
+
+    .about-text p {
+      max-width: 60ch;
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      line-height: 2;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 24px 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-num { color: var(--accent); font-size: 1.9rem; font-weight: 800; line-height: 1.3; }
+    .stat-label { margin-top: 4px; color: var(--text-sub); font-size: 0.85rem; }
+
+    /* ─── FEATURES ─── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .feat-card {
+      padding: 26px 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .feat-card:hover { border-color: rgba(100, 195, 243, 0.4); }
+
+    .feat-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    .feat-title { margin-bottom: 8px; font-size: 1.05rem; font-weight: 700; line-height: 1.6; }
+    .feat-desc { color: var(--text-sub); font-size: 0.9rem; line-height: 1.85; }
+
+    /* ─── PRIVACY ─── */
+    .privacy-card {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 40px 40px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .privacy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .privacy-item-icon {
+      flex: none;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .privacy-item p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.9; }
+
+    .privacy-agree {
+      margin-top: 28px;
+      padding: 18px 20px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(100, 195, 243, 0.22);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.9;
+    }
+
+    .privacy-agree i { margin-inline-end: 8px; color: var(--accent); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 56px 5% 28px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto 36px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand-title { margin-bottom: 10px; font-size: 1.25rem; font-weight: 800; }
+    .footer-brand p { max-width: 46ch; margin-bottom: 20px; color: var(--text-sub); font-size: 0.9rem; line-height: 1.8; }
+    .footer-social { display: flex; gap: 10px; }
+
+    .footer-col h4 { margin-bottom: 14px; font-size: 0.95rem; font-weight: 700; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+
+    .footer-col a {
+      display: inline-block;
+      padding: 4px 0;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .footer-bottom p { color: var(--text-sub); font-size: 0.85rem; }
+
+    /* ─── SCROLL TO TOP ─── */
+    .scroll-top {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      left: 20px;
+      z-index: 900;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s, border-color 0.2s;
+    }
+
+    .scroll-top.show { opacity: 1; visibility: visible; }
+    .scroll-top:hover { border-color: var(--accent); }
+
+    /* ─── MODAL ─── */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      padding: 16px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 8, 18, 0.72);
+    }
+
+    .modal[hidden] { display: none; }
+    .modal:not([hidden]) { display: flex; animation: fadeIn 0.18s ease-out; }
+
+    .modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      max-height: calc(100vh - 32px);
+      max-height: calc(100dvh - 32px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 28px 24px 24px;
+      background: var(--card);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      inset-inline-end: 10px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 0;
+      border-radius: 10px;
+      color: var(--text-sub);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-title { padding-inline-end: 36px; margin-bottom: 6px; font-size: 1.25rem; font-weight: 800; line-height: 1.5; }
+    .modal-desc { margin-bottom: 20px; color: var(--text-sub); font-size: 0.92rem; }
+
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-alt);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .step-num {
+      flex: none;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .step-text { flex: 1; font-size: 0.93rem; line-height: 1.7; }
+    .step-icon { flex: none; color: var(--text-sub); font-size: 1.05rem; }
+
+    .modal-ok { width: 100%; text-decoration: none; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ─── REVEAL (fade in on scroll) ─── */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .js .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-text p { max-width: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 56px; }
+      .section { padding: 64px 5%; }
+      .section-head { margin-bottom: 36px; }
+      .download { padding: 20px 16px; }
+      .privacy-card { padding: 4px 18px 24px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 380px) {
+      .download-btns { gap: 8px; }
+      .dl-btn { padding: 0 8px; gap: 8px; font-size: 0.95rem; }
+    }
+
+    @media (max-width: 330px) {
+      .download-btns { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SCROLL TO TOP -->
+<button type="button" class="scroll-top" id="scrollTop" aria-label="العودة للأعلى">
+  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+</button>
+
+<!-- ══════════════════════════════════ NAVBAR ══════════════════════════════════ -->
+<nav class="navbar" aria-label="التنقل الرئيسي">
+  <a href="#home" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://i.top4top.io/p_38434ili51.jpg" width="36" height="36" alt="الدليل القانوني" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none; width:26px; height:26px;" aria-hidden="true">
+        <circle cx="50" cy="18" r="10" fill="#c9a84c"/>
+        <rect x="44" y="22" width="12" height="48" fill="#c9a84c"/>
+        <rect x="14" y="26" width="72" height="10" fill="#c9a84c"/>
+        <path d="M14 36 L26 70 Q26 80 38 80 L38 70 L26 36 Z" fill="#c9a84c"/>
+        <path d="M86 36 L74 70 Q74 80 62 80 L62 70 L74 36 Z" fill="#c9a84c"/>
+        <rect x="34" y="82" width="32" height="8" rx="4" fill="#c9a84c"/>
+      </svg>
+    </div>
+    <span class="nav-title">الدليل القانوني</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#home">الرئيسية</a></li>
+    <li><a href="#about">نبذة عنا</a></li>
+    <li><a href="#features">مميزات التطبيق</a></li>
+    <li><a href="#privacy">سياسة الخصوصية</a></li>
+    <li><a href="#download" class="nav-cta">تحميل التطبيق</a></li>
+  </ul>
+
+  <button type="button" class="hamburger" id="hamburger" aria-label="قائمة التنقل" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">الرئيسية</a>
+  <a href="#about">نبذة عنا</a>
+  <a href="#features">مميزات التطبيق</a>
+  <a href="#privacy">سياسة الخصوصية</a>
+  <a href="#download">تنزيل التطبيق</a>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════ HERO ══════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+
+    
+
+    <h1 class="hero-title">
+      <span class="hero-brand">الدليل القانوني</span>
+      <span class="hero-tagline">مرجعك القانوني الذكي الأول</span>
+    </h1>
+
+    <p class="hero-desc">
+      وصول فوري وشامل لكافة النصوص والتشريعات القانونية العراقية، مدعوماً بتقنية الذكاء الاصطناعي لخدمة المحامين، الطلاب والباحثين.
+    </p>
+
+    <!-- DOWNLOAD -->
+    <div class="download" id="download" role="group" aria-labelledby="downloadTitle">
+      <h2 class="download-title" id="downloadTitle">تنزيل التطبيق</h2>
+      <div class="download-btns">
+        <button type="button" class="dl-btn" id="iosBtn" aria-haspopup="dialog" aria-label="تعليمات تثبيت التطبيق على الآيفون">
+          <i class="fab fa-apple" aria-hidden="true"></i>
+          <span>للايفون</span>
+        </button>
+        <button type="button" class="dl-btn" id="androidBtn" aria-label="تنزيل التطبيق لأجهزة الاندرويد">
+          <i class="fab fa-android" aria-hidden="true"></i>
+          <span>للاندرويد</span>
+        </button>
+      </div>
+      <p class="dl-status" id="dlStatus" role="status" hidden>
+        بدأ تنزيل التطبيق. إذا لم يبدأ التنزيل، <a id="apkFallback" target="_blank" rel="noopener">اضغط هنا</a>.
+      </p>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-card">
+      <div class="disclaimer-head">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        التنويه القانوني
+      </div>
+      <p>
+        تطبيق الدليل القانوني هو مشروع مستقل لا يتبع لأي جهة حكومية أو سياسية، ولا يمثّل أي جهة رسمية. جميع المعلومات، بما في ذلك النصوص التشريعية والتفسيرات القانونية، تم جمعها من مصادر عامة ومتاحة للجمهور وهي لأغراض المعرفة العامة فقط. لا يقدّم التطبيق بيانات حكومية رسمية. نحن غير مسؤولون عن الأخطاء اللغوية والإملاءية في نقل المواد القانونية.
+      </p>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="social-row">
+      <a href="https://instagram.com/legalg.iq" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/lawguideiq" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+      <a href="https://t.me/legalg_iq" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+      <a href="https://wa.me/9647760812007" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-item">
+      <i class="fas fa-balance-scale" aria-hidden="true"></i>
+      <div>
+        <strong>+1500</strong>
+        <span>نص قانوني</span>
+      </div>
+    </div>
+    <div class="strip-item">
+      <i class="fas fa-users" aria-hidden="true"></i>
+      <div>
+        <strong>آلاف المستخدمين</strong>
+        <span>يثقون بنا يومياً</span>
+      </div>
+    </div>
+    <div class="strip-item">
+      <i class="fas fa-robot" aria-hidden="true"></i>
+      <div>
+        <strong>ذكاء اصطناعي</strong>
+        <span>مساعد قانوني ذكي</span>
+      </div>
+    </div>
+    <div class="strip-item">
+      <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+      <div>
+        <strong>Android و iPhone</strong>
+        <span>متوفر حالياً على أجهزة الاندرويد والآيفون</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div class="about-text reveal">
+        <div class="section-tag">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+          نبذة عن التطبيق
+        </div>
+        <h2 class="section-title">
+          دليلك القانوني<br />الشامل والموثوق
+        </h2>
+        <p>
+          تطبيق الدليل القانوني يوفر لك الوصول السريع لكافة النصوص القانونية، العرائض والطلبات، ويتيح لك البحث والتصفح بطريقة سهلة وحديثة. التطبيق يساعد المحامين، طلبة القانون، والباحثين على دراسة وتحليل القوانين بكفاءة عالية.
+        </p>
+      </div>
+
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">+1500</div>
+          <div class="stat-label">نص قانوني وتشريعي</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7+</div>
+          <div class="stat-label">مميزات متطورة</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">مجاني للجمهور</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">مساعد ذكي مدمج</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ FEATURES ══════════════════════════════════ -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-tag">
+        <i class="fas fa-magic" aria-hidden="true"></i>
+        مميزات التطبيق
+      </div>
+      <h2 class="section-title">
+        كل ما تحتاجه في<br />تطبيق واحد متكامل
+      </h2>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+        <h3 class="feat-title">عرض المواد القانونية بشكل مرتب وحديث</h3>
+        <p class="feat-desc">تصفّح كافة النصوص والتشريعات القانونية العراقية بتنظيم احترافي وواجهة أنيقة تسهّل القراءة والفهم.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+        <h3 class="feat-title">قسم العرائض والطلبات مع نسخ النصوص بسهولة</h3>
+        <p class="feat-desc">مكتبة متكاملة من نماذج العرائض والطلبات القانونية الجاهزة مع إمكانية نسخها بنقرة واحدة.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+        <h3 class="feat-title">الدليل التعليمي للطلاب مع شرح المواد والملخصات</h3>
+        <p class="feat-desc">محتوى تعليمي مفصّل يشرح المواد القانونية بأسلوب مبسّط مع ملخصات تساعد الطلاب على الاستيعاب.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-file-upload" aria-hidden="true"></i></div>
+        <h3 class="feat-title">إمكانية رفع مستندات لاستخراج المحتوى وشرحه</h3>
+        <p class="feat-desc">ارفع وثائقك ومستنداتك القانونية ليقوم الذكاء الاصطناعي باستخراج محتواها وتحليله وشرحه فورياً.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+        <h3 class="feat-title">إنشاء ملخصات صوتية وفيديو وخريطة ذهنية</h3>
+        <p class="feat-desc">حوّل النصوص القانونية المعقدة إلى ملخصات صوتية أو مرئية أو خرائط ذهنية تفاعلية للفهم السريع.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
+        <h3 class="feat-title">إنشاء اختبارات وتقارير تعليمية</h3>
+        <p class="feat-desc">أنشئ اختبارات مخصصة وتقارير تعليمية احترافية لتقييم مستوى الفهم والإعداد للامتحانات القانونية.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+        <h3 class="feat-title">واجهة حديثة وسهلة الاستخدام لكل الأجهزة</h3>
+        <p class="feat-desc">تجربة مستخدم استثنائية على جميع الأجهزة — الهاتف الذكي، الجهاز اللوحي، والحاسوب — بتصميم متجاوب وأنيق.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ PRIVACY ══════════════════════════════════ -->
+<section class="section" id="privacy">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-tag">
+        <i class="fas fa-lock" aria-hidden="true"></i>
+        سياسة الخصوصية
+      </div>
+      <h2 class="section-title">
+        خصوصيتك<br />أولويتنا الأولى
+      </h2>
+    </div>
+
+    <div class="privacy-card reveal">
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></div>
+        <p>يحترم تطبيق الدليل القانوني خصوصية المستخدمين، ولا يقوم بجمع أو تخزين بيانات شخصية حساسة. وقد يتم جمع بعض البيانات التقنية العامة مثل نوع الجهاز ونظام التشغيل وبيانات الأداء بهدف تحسين عمل التطبيق وتجربة الاستخدام.</p>
+      </div>
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-handshake-slash" aria-hidden="true"></i></div>
+        <p>لا يتم بيع أو مشاركة بيانات المستخدمين مع أي طرف ثالث إلا إذا كان ذلك مطلوباً قانوناً أو ضرورياً لتحسين الخدمة أو حماية التطبيق وحقوقه.</p>
+      </div>
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-external-link-alt" aria-hidden="true"></i></div>
+        <p>قد يحتوي التطبيق على روابط أو خدمات خارجية، ولا يتحمل مسؤولية محتواها أو سياسات الخصوصية الخاصة بها.</p>
+      </div>
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-landmark" aria-hidden="true"></i></div>
+        <p>تطبيق الدليل القانوني مشروع مستقل يهدف إلى عرض المعلومات والنصوص القانونية بصورة منظمة ومبسطة، وجميع المواد المعروضة مأخوذة من مصادر عامة ومتاحة للجمهور.</p>
+      </div>
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-info-circle" aria-hidden="true"></i></div>
+        <p>المحتوى الموجود داخل التطبيق هو لأغراض معرفية وتثقيفية فقط، ولا يُعد استشارة قانونية رسمية ولا يغني عن مراجعة مختص عند الحاجة.</p>
+      </div>
+
+      <div class="privacy-item">
+        <div class="privacy-item-icon"><i class="fas fa-edit" aria-hidden="true"></i></div>
+        <p>يحق لإدارة التطبيق تعديل هذه السياسة في أي وقت، ويُعد استمرار استخدام التطبيق موافقة على النسخة المحدثة.</p>
+      </div>
+
+      <div class="privacy-agree">
+        <i class="fas fa-check-circle" aria-hidden="true"></i>
+        باستخدامك لتطبيق الدليل القانوني، فإنك تقر بأنك قرأت هذه السياسة وفهمت مضمونها ووافقت على ما ورد فيها.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-brand-title">⚖ الدليل القانوني</div>
+      <p>مرجعك القانوني الذكي والشامل. يوفر وصولاً فورياً لكافة النصوص التشريعية والمواد القانونية العراقية.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/legalg.iq" class="social-btn sm" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/lawguideiq" class="social-btn sm" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://t.me/legalg_iq" class="social-btn sm" aria-label="Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+        <a href="https://wa.me/9647760812007" class="social-btn sm" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">نبذة عنا</a></li>
+        <li><a href="#features">مميزات التطبيق</a></li>
+        <li><a href="#privacy">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 الدليل القانوني — جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════ iOS MODAL ══════════════════════════════════ -->
+<div class="modal" id="iosModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="iosModalTitle" aria-describedby="iosModalDesc">
+    <button type="button" class="modal-close" id="iosClose" aria-label="إغلاق النافذة">
+      <i class="fas fa-xmark" aria-hidden="true"></i>
+    </button>
+
+    <h2 class="modal-title" id="iosModalTitle">تثبيت التطبيق على الآيفون</h2>
+    <p class="modal-desc" id="iosModalDesc">اتبع الخطوات التالية لإضافة التطبيق إلى الشاشة الرئيسية.</p>
+
+    <ol class="steps" role="list">
+      <li class="step">
+        <span class="step-num" aria-hidden="true">1</span>
+        <span class="step-text">الدخول إلى الموقع من المتصفح</span>
+        <i class="fas fa-globe step-icon" aria-hidden="true"></i>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">2</span>
+        <span class="step-text">الضغط على الثلاث نقاط الخاصة بالمتصفح، ومن ثم الضغط على زر المشاركة</span>
+        <i class="fas fa-arrow-up-from-bracket step-icon" aria-hidden="true"></i>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">3</span>
+        <span class="step-text">الضغط على إضافة إلى الصفحة الرئيسية</span>
+        <i class="fas fa-square-plus step-icon" aria-hidden="true"></i>
+      </li>
+      <li class="step">
+        <span class="step-num" aria-hidden="true">4</span>
+        <span class="step-text">تأكيد الإضافة، وسيظهر التطبيق على جهازك ويمكن تشغيله مباشرة.</span>
+        <i class="fas fa-circle-check step-icon" aria-hidden="true"></i>
+      </li>
+    </ol>
+
+    <a class="dl-btn modal-ok" id="iosOk" target="_blank" rel="noopener">فهمت، الانتقال إلى التطبيق</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ JAVASCRIPT ══════════════════════════════════ -->
+<script>
+/* رابط ملف APK — غيّره من هنا فقط */
+const APK_URL = "https://app.lawguideiq.workers.dev/";
+
+/* رابط الموقع الذي يفتحه زر «فهمت، الانتقال إلى التطبيق» في نافذة الآيفون — غيّره من هنا فقط */
+const IOS_APP_URL = "https://example.com";
+
+/* ─── ANDROID: تنزيل APK مباشرة ─── */
+(function () {
+  const btn = document.getElementById('androidBtn');
+  const status = document.getElementById('dlStatus');
+  const fallback = document.getElementById('apkFallback');
+
+  btn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = APK_URL;
+    a.download = '';
+    a.rel = 'noopener';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    /* رابط احتياطي يفتح في تبويب جديد إذا منع المتصفح التنزيل المباشر */
+    fallback.href = APK_URL;
+    status.hidden = false;
+  });
+})();
+
+/* ─── iPHONE: نافذة التعليمات ─── */
+(function () {
+  const modal = document.getElementById('iosModal');
+  const openBtn = document.getElementById('iosBtn');
+  const closeBtn = document.getElementById('iosClose');
+  const okBtn = document.getElementById('iosOk');
+  let lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.documentElement.classList.add('no-scroll');
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.documentElement.classList.remove('no-scroll');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  okBtn.href = IOS_APP_URL;
+  okBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Tab') {
+      /* إبقاء التركيز داخل النافذة */
+      const first = closeBtn, last = okBtn;
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+
+/* ─── MOBILE MENU ─── */
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+
+  function setMenu(open) {
+    hamburger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  }
+
+  hamburger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+})();
+
+/* ─── SCROLL TO TOP ─── */
+document.getElementById('scrollTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0 });
+});
+
+/* ─── OBSERVERS: reveal / active link / scroll-top visibility ─── */
+(function () {
+  const reveals = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
+  const revealIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach((el) => revealIO.observe(el));
+
+  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  const activeIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach((s) => activeIO.observe(s));
+
+  const topBtn = document.getElementById('scrollTop');
+  new IntersectionObserver((entries) => {
+    topBtn.classList.toggle('show', !entries[0].isIntersecting);
+  }).observe(document.getElementById('home'));
+})();
+</script>
+
+</body>
+</html>
